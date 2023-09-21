@@ -13,6 +13,4 @@ galaxy_info:
   galaxy_tags:
     - docker
     - swarm
-    - docker-swarm
-    - docker-swarm-mode
-    - swarm-mode
+    - swarmmode
