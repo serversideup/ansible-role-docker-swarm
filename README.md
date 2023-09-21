@@ -76,7 +76,7 @@ docker_user:
 
 Dependencies
 ------------
-See (requirements.yml)[./requirements.yml] for all collection dependencies.
+See [`requirements.yml`](./requirements.yml) for all collection dependencies.
 
 To install all dependencies, run:
 
