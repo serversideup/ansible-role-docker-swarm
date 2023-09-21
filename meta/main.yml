@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  role_name: docker_swarm
+  author: serversideup
+  description: Set up and maintain Docker Swarm easily.
+  company: "Server Side Up"
+  license: license (GPL-3.0-only)
+  min_ansible_version: "2.1"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+  galaxy_tags:
+    - docker
+    - swarm
+    - docker-swarm
+    - docker-swarm-mode
+    - swarm-mode
