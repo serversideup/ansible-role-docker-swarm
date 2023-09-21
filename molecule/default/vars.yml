@@ -1,0 +1,6 @@
+docker_user:
+  username: dockeruser
+  uid: 8888
+  group: dockergroup
+  secondary_groups: "docker"
+  gid: 8888

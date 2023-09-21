@@ -1,0 +1,38 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  vars_files:
+    - vars.yml
+  tasks:   
+     
+    - name: Check to see if the user "deploy" exists.
+      command: whoami
+      become_user: deploy
+      register: deploy_whoami
+      changed_when: false
+
+    - name: Get Docker user info.
+      ansible.builtin.user:
+        name: "{{ docker_user.username }}"
+      register: docker_user_test
+
+    - name: Assert docker user exists.
+      assert:
+        that:
+          - docker_user_test.name == "{{ docker_user.username }}"
+          - docker_user_test.changed == false
+          - docker_user_test.uid == {{ docker_user.uid }}
+        fail_msg: "Failed to assert the Docker user exists."
+    
+    - name: Get Docker & Docker Swarm info.
+      community.docker.docker_swarm_info:
+      ignore_errors: true
+      register: docker_info
+    
+    - name: Assert Docker is installed and it's a swarm manager.
+      assert:
+        that:
+          - docker_info.docker_swarm_active == true
+          - docker_info.docker_swarm_manager == true
+        fail_msg: "Failed to assert Docker Swarm was initialized."
